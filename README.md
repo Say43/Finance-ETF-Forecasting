@@ -1,4 +1,4 @@
-# KronosETF-Forecasting
+# Finance-ETF-Forecasting
 
 Fine-tuning, conformal calibration, and rigorous evaluation of the
 [Kronos](https://github.com/shiyu-coder/Kronos) financial foundation model on
