@@ -1,0 +1,27 @@
+.venv/
+venv/
+.vscode/
+.idea/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# model weights / checkpoints (see NOTICE.md — not redistributed)
+finetune/checkpoints/
+finetune/checkpoints_etf/
+external/
+
+# data & run artifacts (fetched on demand, never committed)
+finetune/data/
+data/
+*.csv
+*.log
+*.png
+outputs/
+research_*.log
+sim_*.csv
+vol_race_results.csv
+
+!requirements*.txt

@@ -1,0 +1,18 @@
+{
+  "id": "says43/kronos-etf-finetune",
+  "title": "kronos-etf-finetune",
+  "code_file": "kronos_etf_finetune.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [],
+  "model_sources": [],
+  "docker_image_pinning_type": "latest",
+  "machine_shape": "NvidiaTeslaT4"
+}

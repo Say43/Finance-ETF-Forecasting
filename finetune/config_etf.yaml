@@ -1,0 +1,36 @@
+# Kronos Fine-Tuning Configuration - ETF variant
+# Same base model as config.yaml, but trained on the multi-symbol ETF dataset
+# built by `python finetune/prepare_data.py --asset-class etf`.
+model:
+  name: "NeoQuasar/Kronos-small"
+  tokenizer_name: "NeoQuasar/Kronos-Tokenizer-base"
+  context_length: 360
+  prediction_length: 20
+  interval: "1d"
+
+tokenizer:
+  save_folder: "tokenizer_finetuned"
+  quicktest_folder: "tokenizer_quicktest"
+
+training:
+  num_epochs: 5
+  batch_size: 8
+  gradient_accumulation_steps: 4
+  learning_rate: 1.0e-4
+  warmup_steps: 100
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  save_every_n_epochs: 1
+  output_dir: "finetune/checkpoints_etf"
+  seed: 42
+
+data:
+  train_path: "finetune/data/etf_train.arrow"
+  val_path: "finetune/data/etf_val.arrow"
+  test_path: "finetune/data/etf_test.arrow"
+
+evaluation:
+  n_samples: 20
+  temperature: 0.9
+  top_k: 0
+  top_p: 0.95
