@@ -1,6 +1,6 @@
 # Finance-ETF-Forecasting
 
-Fine-tuning, conformal calibration, and rigorous evaluation of the
+Fine-tuning, conformal calibration, and evaluation of the
 [Kronos](https://github.com/shiyu-coder/Kronos) financial foundation model on
 ETF daily data — plus everything that followed once the honest evaluation said
 "no directional edge."
