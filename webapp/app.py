@@ -96,6 +96,15 @@ def classify_regime(close: pd.Series) -> tuple[str, float, float, float]:
     return regime, ret_20 * 100, ret_60 * 100, ann_vol * 100
 
 
+DISCLAIMER = (
+    "Forschungs- und Lehrsoftware. Keine Anlageberatung, keine Empfehlung zum Kauf oder "
+    "Verkauf von Wertpapieren, keine Eignungspruefung. Die Prognosen dieses Modells haben "
+    "in der Evaluation keinen messbaren Richtungsvorteil gegenueber einem Random Walk "
+    "gezeigt (siehe docs/results.md). Kursdaten: Yahoo Finance via yfinance, nur fuer "
+    "persoenliche, nicht-kommerzielle Nutzung. Siehe DISCLAIMER.md."
+)
+
+
 def run_forecast(symbol: str) -> dict:
     symbol = symbol.strip().upper()
     if not symbol or not all(c.isalnum() or c in ".-" for c in symbol):
@@ -200,6 +209,7 @@ def run_forecast(symbol: str) -> dict:
         "regime": {"label": regime, "ret_20d": round(ret20, 2), "ret_60d": round(ret60, 2), "ann_vol_pct": round(ann_vol, 1)},
         "credibility": cred,
         "horizon_table": horizon,
+        "disclaimer": DISCLAIMER,
     }
 
 
@@ -240,6 +250,7 @@ INDEX_HTML = r"""<!doctype html>
   .wrap{max-width:900px;margin:0 auto;padding:56px 24px 100px;}
   .brand{font-size:13px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;}
   .tag{color:var(--muted);font-size:12.5px;margin-top:6px;letter-spacing:.01em;}
+  .disclaimer{color:var(--muted);font-size:11.5px;line-height:1.5;margin-top:36px;padding-top:14px;border-top:1px solid var(--line);}
   form{display:flex;gap:10px;margin:34px 0 14px;}
   input{flex:1;background:var(--bg);border:1px solid var(--line);border-radius:12px;
     padding:15px 16px;font-size:16px;color:var(--ink);letter-spacing:.06em;text-transform:uppercase;
@@ -327,6 +338,12 @@ INDEX_HTML = r"""<!doctype html>
 
   <div id="err" class="err hidden"></div>
   <div id="out" class="hidden"></div>
+  <p class="disclaimer"><b>Hinweis:</b> Forschungs- und Lehrsoftware, keine Anlageberatung und keine
+  Empfehlung zum Kauf oder Verkauf von Wertpapieren. Der Betreiber ist kein zugelassener
+  Anlageberater. Die Prognosen dieses Modells zeigten in der Evaluation keinen messbaren
+  Richtungsvorteil gegenüber einem Random Walk; sie sind kein Handelssignal.
+  Kursdaten: Yahoo Finance (yfinance), nur für persönliche, nicht-kommerzielle Nutzung.
+  Vollständiger Haftungsausschluss: DISCLAIMER.md im Repository.</p>
 </div>
 <script>
 const CHIPS=["SPY","QQQ","IWM","DIA","EFA","GLD","TLT","VTI","XLF","VNQ"];
